@@ -13,7 +13,8 @@
     <section class="home-section mb-5">
         <div class="mt-2 p-4">
             <div class="d-flex justify-content-start">
-                <a class="btn d-flex me-sm-3 me-2 mb-3 mb-md-0" id="btn-tambah" href="javascript:void(0);" onclick="history.back();">
+                <a class="btn d-flex me-sm-3 me-2 mb-3 mb-md-0" id="btn-tambah" href="javascript:void(0);"
+                    onclick="history.back();">
                     <i class="bi bi-chevron-left me-2"></i>
                     Kembali
                 </a>
@@ -30,7 +31,7 @@
                         <button class="accordion-button " type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <label for="" class="fw-bold">
-                               1. Kurva Berat Badan Menurut Panjang/Tinggi Badan
+                                1. Kurva Berat Badan Menurut Panjang/Tinggi Badan
                             </label>
                         </button>
                     </h2>
@@ -45,7 +46,7 @@
                         <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <label for="" class="fw-bold">
-                               2. Kurva Panjang/Tinggi Badan Menurut Umur (Bulan)
+                                2. Kurva Panjang/Tinggi Badan Menurut Umur (Bulan)
                             </label>
                         </button>
                     </h2>
@@ -60,7 +61,7 @@
                         <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             <label for="" class="fw-bold">
-                              3. Kurva Berat Badan Menurut Umur (Bulan)
+                                3. Kurva Berat Badan Menurut Umur (Bulan)
                             </label>
                         </button>
                     </h2>
@@ -75,7 +76,7 @@
                         <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             <label for="" class="fw-bold">
-                              4. Kurva Linkar Kepala Menurut Umur (Bulan)
+                                4. Kurva Linkar Kepala Menurut Umur (Bulan)
                             </label>
                         </button>
                     </h2>
@@ -102,6 +103,7 @@
                                 <th id="th" class="text-center align-middle">Lingkar Lengan</th>
                                 <th id="th" class="text-center align-middle">Lingkar Kepala</th>
                                 <th id="th" class="text-center align-middle w-25">Status</th>
+                                <th id="th" class="text-center align-middle w-25">Gizi</th>
                                 <th id="th" class="text-center align-middle w-25">Tanggal Periksa</th>
                             </tr>
                         </thead>
@@ -118,10 +120,13 @@
                                     <td class="text-center">{{ $data->ll_anak }} cm</td>
                                     <td class="text-center">{{ $data->lk_anak }} cm</td>
                                     <td class="text-center fw-bold"
-                                        style="color: {{ $data->st_anak === 'Normal' ? 'mediumseagreen' : ($data->st_anak === 'Gizi Buruk' ? 'red' : ($data->st_anak === 'Gizi Kurang' ? 'darkorange' : ($data->st_anak === 'Kelebihan Berat Badan' ? 'darkblue' : 'black'))) }}">
+                                        style="color: {{ $data->st_anak === 'Normal' ? 'mediumseagreen' : ($data->st_anak === 'Pendek' ? 'red' : ($data->st_anak === 'Tinggi' ? 'darkblue' : 'black')) }}">
                                         {{ $data->st_anak }}
                                     </td>
-
+                                    <td class="text-center fw-bold"
+                                        style="color: {{ $data->gz_anak === 'Normal' ? 'mediumseagreen' : ($data->gz_anak === 'Gizi Buruk' ? 'red' : ($data->gz_anak === 'Gizi Kurang' ? 'darkorange' : ($data->gz_anak === 'Kelebihan Berat Badan' ? 'darkblue' : 'black'))) }}">
+                                        {{ $data->gz_anak }}
+                                    </td>
                                     <td class="text-center">{{ $data->created_at->format('Y-m-d') }}</td>
                                 </tr>
                             @endforeach

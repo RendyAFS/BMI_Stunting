@@ -140,6 +140,11 @@
                             placeholder="Status Anak" required readonly value="- Silahkan Masukan Data">
                         <label for="st_anak">Status Aanak</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control border-dark-subtle" id="gz_anak" name="gz_anak"
+                            placeholder="Gizi Anak" required readonly value="- Silahkan Masukan Data">
+                        <label for="gz_anak">Gizi Aanak</label>
+                    </div>
                 </div>
             </div>
 
@@ -327,6 +332,7 @@ function getDataFromFirebase() {
     let lk_anakInput = document.getElementById('lk_anak');
     let ll_anakInput = document.getElementById('ll_anak');
     let st_anakInput = document.getElementById('st_anak');
+    let gz_anakInput = document.getElementById('gz_anak');
     let imt_anakInput = document.getElementById('h_imt');
     let danaksId = document.getElementById('danaks_id');
 
@@ -358,48 +364,62 @@ function getDataFromFirebase() {
             if (ut_anakValue < 5) {
                 if (jkValue === 'L') {
                     if (imt < 9) {
-                        st_anakInput.value = "Bawah Garis Merah";
+                        st_anakInput.value = "Tinggi";
+                        gz_anakInput.value = "Bawah Garis Merah";
                         imt_anakInput.value = imt;
                     } else if (imt >= 9 && imt < 11) {
-                        st_anakInput.value = 'Gizi Kurang';
+                        st_anakInput.value = 'Tinggi';
+                        gz_anakInput.value = 'Gizi Kurang';
                         imt_anakInput.value = imt;
                     } else if (imt >= 11 && imt < 19) {
                         st_anakInput.value = 'Normal';
+                        gz_anakInput.value = 'Normal';
                         imt_anakInput.value = imt;
                     } else if (imt >= 19 && imt < 33) {
-                        st_anakInput.value = 'Kelebihan Berat Badan';
+                        st_anakInput.value = 'Pendek';
+                        gz_anakInput.value = 'Kelebihan Berat Badan';
                         imt_anakInput.value = imt;
                     } else {
-                        st_anakInput.value = 'Obesitas';
+                        st_anakInput.value = 'Pendek';
+                        gz_anakInput.value = 'Obesitas';
                         imt_anakInput.value = imt;
                     }
                 } else if (jkValue === 'P') {
                     if (imt < 9) {
-                        st_anakInput.value = "Bawah Garis Merah";
+                        st_anakInput.value = "Tinggi";
+                        gz_anakInput.value = "Bawah Garis Merah";
                         imt_anakInput.value = imt;
                     } else if (imt >= 9 && imt < 11) {
-                        st_anakInput.value = 'Gizi Kurang';
+                        st_anakInput.value = 'Tinggi';
+                        gz_anakInput.value = 'Gizi Kurang';
                         imt_anakInput.value = imt;
                     } else if (imt >= 11 && imt < 19) {
                         st_anakInput.value = 'Normal';
+                        gz_anakInput.value = 'Normal';
                         imt_anakInput.value = imt;
                     } else if (imt >= 19 && imt < 33) {
-                        st_anakInput.value = 'Kelebihan Berat Badan';
+                        st_anakInput.value = 'Pendek';
+                        gz_anakInput.value = 'Kelebihan Berat Badan';
                         imt_anakInput.value = imt;
                     } else {
-                        st_anakInput.value = 'Obesitas';
+                        st_anakInput.value = 'Pendek';
+                        gz_anakInput.value = 'Obesitas';
                         imt_anakInput.value = imt;
                     }
                 }
             } else {
                 if (imt < 10) {
-                    st_anakInput.value = 'Gizi Buruk';
+                    st_anakInput.value = 'Tinggi';
+                    gz_anakInput.value = 'Gizi Buruk';
                 } else if (imt >= 10 && imt < 25) {
                     st_anakInput.value = 'Normal';
+                    gz_anakInput.value = 'Normal';
                 } else if (imt >= 25 && imt < 30) {
-                    st_anakInput.value = 'Kelebihan Berat Badan';
+                    st_anakInput.value = 'Pendek';
+                    gz_anakInput.value = 'Kelebihan Berat Badan';
                 } else {
-                    st_anakInput.value = 'Obesitas';
+                    st_anakInput.value = 'Pendek';
+                    gz_anakInput.value = 'Obesitas';
                 }
             }
             imt_anakInput.value = imt.toFixed(2);

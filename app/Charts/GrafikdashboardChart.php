@@ -31,7 +31,7 @@ class GrafikdashboardChart
             // Ambil data berdasarkan bulan, tahun saat ini, dan posyandu yang dipilih
             $total_normal = Dbulan::whereMonth('created_at', $index + 1)
                 ->whereYear('created_at', date('Y'))
-                ->where('st_anak', 'Normal')
+                ->where('gz_anak', 'Normal')
                 // ->whereHas('danaks.dposyandu', function ($query) use ($selectedPosyandu) {
                 //     $query->where('nama_posyandu', $selectedPosyandu);
                 // })
@@ -39,28 +39,28 @@ class GrafikdashboardChart
 
             $total_gizi_kurang = Dbulan::whereMonth('created_at', $index + 1)
                 ->whereYear('created_at', date('Y'))
-                ->where('st_anak', 'Gizi Kurang')
+                ->where('gz_anak', 'Gizi Kurang')
                 // ->whereHas('danaks.dposyandu', function ($query) use ($selectedPosyandu) {
                 //     $query->where('nama_posyandu', $selectedPosyandu);
                 // })
                 ->count();
             $total_gizi_buruk = Dbulan::whereMonth('created_at', $index + 1)
                 ->whereYear('created_at', date('Y'))
-                ->where('st_anak', 'Gizi Buruk')
+                ->where('gz_anak', 'Gizi Buruk')
                 // ->whereHas('danaks.dposyandu', function ($query) use ($selectedPosyandu) {
                 //     $query->where('nama_posyandu', $selectedPosyandu);
                 // })
                 ->count();
             $total_kelebihan_bb = Dbulan::whereMonth('created_at', $index + 1)
                 ->whereYear('created_at', date('Y'))
-                ->where('st_anak', 'Kelebihan Berat Badan')
+                ->where('gz_anak', 'Kelebihan Berat Badan')
                 // ->whereHas('danaks.dposyandu', function ($query) use ($selectedPosyandu) {
                 //     $query->where('nama_posyandu', $selectedPosyandu);
                 // })
                 ->count();
             $total_obesitas = Dbulan::whereMonth('created_at', $index + 1)
                 ->whereYear('created_at', date('Y'))
-                ->where('st_anak', 'Obesitas')
+                ->where('gz_anak', 'Obesitas')
                 // ->whereHas('danaks.dposyandu', function ($query) use ($selectedPosyandu) {
                 //     $query->where('nama_posyandu', $selectedPosyandu);
                 // })

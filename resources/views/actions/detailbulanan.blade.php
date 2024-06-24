@@ -96,6 +96,7 @@
                                 <th id="th" class="text-center align-middle">Lingkar Lengan</th>
                                 <th id="th" class="text-center align-middle">Lingkar Kepala</th>
                                 <th id="th" class="text-center align-middle w-25">Status</th>
+                                <th id="th" class="text-center align-middle w-25">Gizi</th>
                                 <th id="th" class="text-center align-middle w-25">Tanggal Periksa</th>
                             </tr>
                         </thead>
@@ -112,8 +113,12 @@
                                     <td class="text-center">{{ $data->ll_anak }} cm</td>
                                     <td class="text-center">{{ $data->lk_anak }} cm</td>
                                     <td class="text-center fw-bold"
-                                        style="color: {{ $data->st_anak === 'Normal' ? 'mediumseagreen' : ($data->st_anak === 'Gizi Buruk' ? 'red' : ($data->st_anak === 'Gizi Kurang' ? 'darkorange' : ($data->st_anak === 'Kelebihan Berat Badan' ? 'darkblue' : 'black'))) }}">
+                                        style="color: {{ $data->st_anak === 'Normal' ? 'mediumseagreen' : ($data->st_anak === 'Pendek' ? 'red' :  ($data->st_anak === 'Tinggi' ? 'darkblue' : 'black')) }}">
                                         {{ $data->st_anak }}
+                                    </td>
+                                    <td class="text-center fw-bold"
+                                        style="color: {{ $data->gz_anak === 'Normal' ? 'mediumseagreen' : ($data->gz_anak === 'Gizi Buruk' ? 'red' : ($data->gz_anak === 'Gizi Kurang' ? 'darkorange' : ($data->gz_anak === 'Kelebihan Berat Badan' ? 'darkblue' : 'black'))) }}">
+                                        {{ $data->gz_anak }}
                                     </td>
 
                                     <td class="text-center">{{ $data->created_at->format('Y-m-d') }}</td>

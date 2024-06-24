@@ -39,9 +39,22 @@
                                             <input type="text" class="form-control" id="st_anak" name="st_anak"
                                                 placeholder="Status Anak" value="{{ $dbulanans->st_anak }}" required
                                                 readonly
-                                                style="color: {{ $dbulanans->st_anak === 'Normal' ? 'mediumseagreen' : ($dbulanans->st_anak === 'Gizi Buruk' ? 'red' : ($dbulanans->st_anak === 'Gizi Kurang' ? 'darkorange' : ($dbulanans->st_anak === 'Kelebihan Berat Badan' ? 'darkblue' : ($dbulanans->st_anak === 'Obesitas' ? 'black' : 'black')))) }}">
-
+                                                style="color: {{ $dbulanans->st_anak === 'Normal'
+                                                    ? 'mediumseagreen'
+                                                    : ($dbulanans->st_anak === 'Pendek'
+                                                        ? 'red'
+                                                        : ($dbulanans->st_anak === 'Tinggi'
+                                                            ? 'darkblue'
+                                                            : 'defaultColor')) }};">
                                             <label for="st_anak" class="fw-bold">Status Anak:</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="gz_anak" name="gz_anak"
+                                                placeholder="Status Anak" value="{{ $dbulanans->gz_anak }}" required
+                                                readonly
+                                                style="color: {{ $dbulanans->gz_anak === 'Normal' ? 'mediumseagreen' : ($dbulanans->gz_anak === 'Gizi Buruk' ? 'red' : ($dbulanans->gz_anak === 'Gizi Kurang' ? 'darkorange' : ($dbulanans->gz_anak === 'Kelebihan Berat Badan' ? 'darkblue' : ($dbulanans->gz_anak === 'Obesitas' ? 'black' : 'black')))) }}">
+
+                                            <label for="st_anak" class="fw-bold">Gizi Anak:</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <select class="form-select" id="floatingSelectGrid" name="c_ukur"
@@ -163,7 +176,7 @@
                                     placeholder="Nama" value="{{ Auth::user()->name }}" required readonly>
                                 <input type="text" class="form-control " id="aktivitas" name="aktivitas"
                                     placeholder="Aktivitas" value="Edit" required readonly>
-                                <textarea class="form-control" id="data" name="data" rows="3" required readonly>{{ $dbulanans->danaks->nama_anak }} - {{ $dbulanans->umur_periksa }} - {{ $dbulanans->st_anak }} - {{ $dbulanans->c_ukur }} - berat badan {{ $dbulanans->bb_anak }} kg - tinggi badan {{ $dbulanans->tb_anak }} cm - lingkar Kepala {{ $dbulanans->lk_anak }} cm - lingkar lengan {{ $dbulanans->ll_anak }} cm
+                                <textarea class="form-control" id="data" name="data" rows="3" required readonly>{{ $dbulanans->danaks->nama_anak }} - {{ $dbulanans->umur_periksa }} - {{ $dbulanans->c_ukur }} - berat badan {{ $dbulanans->bb_anak }} kg - tinggi badan {{ $dbulanans->tb_anak }} cm - lingkar Kepala {{ $dbulanans->lk_anak }} cm - lingkar lengan {{ $dbulanans->ll_anak }} cm
                             </textarea>
                                 <button class="btn btn-success shadow">Edit</button>
                             </form>

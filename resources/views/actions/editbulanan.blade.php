@@ -23,8 +23,8 @@
                                         <div class="form-floating mb-3 d-none">
                                             <input type="text"
                                                 class="form-control border border-dark-subtle @error('users_id') is-invalid @enderror"
-                                                id="users_id" name="users_id" placeholder="Masukkan NIK" required maxlength="16"
-                                                value="{{ Auth::user()->id }}">
+                                                id="users_id" name="users_id" placeholder="Masukkan NIK" required
+                                                maxlength="16" value="{{ Auth::user()->id }}">
                                             <label for="users_id" class="">User_id:</label>
                                             @error('users_id')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -40,9 +40,22 @@
                                             <input type="text" class="form-control" id="st_anak" name="st_anak"
                                                 placeholder="Status Anak" value="{{ $dbulanans->st_anak }}" required
                                                 readonly
-                                                style="color: {{ $dbulanans->st_anak === 'Normal' ? 'mediumseagreen' : ($dbulanans->st_anak === 'Gizi Buruk' ? 'red' : ($dbulanans->st_anak === 'Gizi Kurang' ? 'darkorange' : ($dbulanans->st_anak === 'Kelebihan Berat Badan' ? 'darkblue' : ($dbulanans->st_anak === 'Obesitas' ? 'black' : 'black')))) }}">
-
+                                                style="color: {{ $dbulanans->st_anak === 'Normal'
+                                                    ? 'mediumseagreen'
+                                                    : ($dbulanans->st_anak === 'Pendek'
+                                                        ? 'red'
+                                                        : ($dbulanans->st_anak === 'Tinggi'
+                                                            ? 'darkblue'
+                                                            : 'defaultColor')) }};">
                                             <label for="st_anak" class="fw-bold">Status Anak:</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="gz_anak" name="gz_anak"
+                                                placeholder="Status Anak" value="{{ $dbulanans->gz_anak }}" required
+                                                readonly
+                                                style="color: {{ $dbulanans->gz_anak === 'Normal' ? 'mediumseagreen' : ($dbulanans->gz_anak === 'Gizi Buruk' ? 'red' : ($dbulanans->gz_anak === 'Gizi Kurang' ? 'darkorange' : ($dbulanans->gz_anak === 'Kelebihan Berat Badan' ? 'darkblue' : ($dbulanans->gz_anak === 'Obesitas' ? 'black' : 'black')))) }}">
+
+                                            <label for="st_anak" class="fw-bold">Gizi Anak:</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <select class="form-select" id="floatingSelectGrid" name="c_ukur"
@@ -92,8 +105,9 @@
                                 {{-- d-none --}}
                                 <div class="d-none">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control d-none" id="danaks_id" name="danaks_id"
-                                            placeholder="Masukkan Nama Anak" value="{{ $dbulanans->danaks->id }}" required>
+                                        <input type="text" class="form-control d-none" id="danaks_id"
+                                            name="danaks_id" placeholder="Masukkan Nama Anak"
+                                            value="{{ $dbulanans->danaks->id }}" required>
                                         <label for="floatingInput" class="fw-bold">Nama Anak:</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -140,7 +154,7 @@
                                     placeholder="Nama" value="{{ Auth::user()->name }}" required readonly>
                                 <input type="text" class="form-control " id="aktivitas" name="aktivitas"
                                     placeholder="Aktivitas" value="Edit" required readonly>
-                                <textarea class="form-control" id="data" name="data" rows="3" required readonly>{{ $dbulanans->danaks->nama_anak }} - {{ $dbulanans->umur_periksa }} - {{ $dbulanans->st_anak }} - {{ $dbulanans->c_ukur }} - berat badan {{ $dbulanans->bb_anak }} kg - tinggi badan {{ $dbulanans->tb_anak }} cm - lingkar Kepala {{ $dbulanans->lk_anak }} cm - lingkar lengan {{ $dbulanans->ll_anak }} cm
+                                <textarea class="form-control" id="data" name="data" rows="3" required readonly>{{ $dbulanans->danaks->nama_anak }} - {{ $dbulanans->umur_periksa }} - {{ $dbulanans->c_ukur }} - berat badan {{ $dbulanans->bb_anak }} kg - tinggi badan {{ $dbulanans->tb_anak }} cm - lingkar Kepala {{ $dbulanans->lk_anak }} cm - lingkar lengan {{ $dbulanans->ll_anak }} cm
                                 </textarea>
                             </form>
                         </div>
@@ -181,6 +195,7 @@
                 let ll_anakInput = document.getElementById('ll_anak');
                 let umurInputt = document.getElementById('umur_tahun');
                 let st_anakInput = document.getElementById('st_anak');
+                let gz_anakInput = document.getElementById('gz_anak');
                 let jkValue = document.getElementById('data-jk').value; // Ambil nilai dari elemen
 
                 // Tambahkan event listener ke setiap input untuk memanggil fungsi updateStatusAnak saat ada perubahan
@@ -204,48 +219,62 @@
                         if (ut_anakValue < 5) {
                             if (jkValue === 'L') {
                                 if (imt < 9) {
-                                    st_anakInput.value = "Bawah Garis Merah";
+                                    st_anakInput.value = "Tinggi";
+                                    gz_anakInput.value = "Bawah Garis Merah";
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 9 && imt < 11) {
-                                    st_anakInput.value = 'Gizi Kurang';
+                                    st_anakInput.value = 'Tinggi';
+                                    gz_anakInput.value = 'Gizi Kurang';
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 11 && imt < 19) {
                                     st_anakInput.value = 'Normal';
+                                    gz_anakInput.value = 'Normal';
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 19 && imt < 33) {
-                                    st_anakInput.value = 'Kelebihan Berat Badan';
+                                    st_anakInput.value = 'Pendek';
+                                    gz_anakInput.value = 'Kelebihan Berat Badan';
                                     imt_anakInput.value = imt;
                                 } else {
-                                    st_anakInput.value = 'Obesitas';
+                                    st_anakInput.value = 'Pendek';
+                                    gz_anakInput.value = 'Obesitas';
                                     imt_anakInput.value = imt;
                                 }
                             } else if (jkValue === 'P') {
                                 if (imt < 9) {
-                                    st_anakInput.value = "Bawah Garis Merah";
+                                    st_anakInput.value = "Tinggi";
+                                    gz_anakInput.value = "Bawah Garis Merah";
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 9 && imt < 11) {
-                                    st_anakInput.value = 'Gizi Kurang';
+                                    st_anakInput.value = 'Tinggi';
+                                    gz_anakInput.value = 'Gizi Kurang';
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 11 && imt < 19) {
                                     st_anakInput.value = 'Normal';
+                                    gz_anakInput.value = 'Normal';
                                     imt_anakInput.value = imt;
                                 } else if (imt >= 19 && imt < 33) {
-                                    st_anakInput.value = 'Kelebihan Berat Badan';
+                                    st_anakInput.value = 'Pendek';
+                                    gz_anakInput.value = 'Kelebihan Berat Badan';
                                     imt_anakInput.value = imt;
                                 } else {
-                                    st_anakInput.value = 'Obesitas';
+                                    st_anakInput.value = 'Pendek';
+                                    gz_anakInput.value = 'Obesitas';
                                     imt_anakInput.value = imt;
                                 }
                             }
                         } else {
                             if (imt < 10) {
-                                st_anakInput.value = 'Gizi Buruk';
+                                st_anakInput.value = 'Tinggi';
+                                gz_anakInput.value = 'Gizi Buruk';
                             } else if (imt >= 10 && imt < 25) {
                                 st_anakInput.value = 'Normal';
+                                gz_anakInput.value = 'Normal';
                             } else if (imt >= 25 && imt < 30) {
-                                st_anakInput.value = 'Kelebihan Berat Badan';
+                                st_anakInput.value = 'Pendek';
+                                gz_anakInput.value = 'Kelebihan Berat Badan';
                             } else {
-                                st_anakInput.value = 'Obesitas';
+                                st_anakInput.value = 'Pendek';
+                                gz_anakInput.value = 'Obesitas';
                             }
                         }
                         imt_anakInput.value = imt.toFixed(2);

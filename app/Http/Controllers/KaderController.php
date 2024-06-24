@@ -112,6 +112,7 @@ class KaderController extends Controller
         $dbulans->ll_anak = $request->ll_anak;
 
         $dbulans->st_anak = $request->st_anak;
+        $dbulans->gz_anak = $request->gz_anak;
         $dbulans->c_ukur = $request->c_ukur;
 
         // Simpan objek Mahal ke dalam database
@@ -162,7 +163,7 @@ class KaderController extends Controller
         }
 
         $danak = new Danak;
-        $danak->users_id = $request->users_id;
+        // $danak->users_id = $request->users_id;
         $danak->nik_anak = $request->nik_anak;
         $danak->nama_anak = $request->nama_anak;
         $danak->tanggal_lahir = $request->tanggal_lahir;
@@ -263,6 +264,7 @@ class KaderController extends Controller
         $dbulanans->lk_anak = $request->lk_anak;
         $dbulanans->ll_anak = $request->ll_anak;
         $dbulanans->st_anak = $request->st_anak;
+        $dbulanans->gz_anak = $request->gz_anak;
         $dbulanans->c_ukur = $request->c_ukur;
 
         $dbulanans->created_at = $request->created_at;

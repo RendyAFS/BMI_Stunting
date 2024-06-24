@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("ll_anak");
             $table->string("c_ukur");
             $table->string("st_anak");
+            $table->string("gz_anak");
             $table->timestamps();
         });
     }

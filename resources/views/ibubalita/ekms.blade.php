@@ -31,11 +31,12 @@
                                 <input type="number" class="form-control" id="nik_anak" name="nik_anak" required
                                     placeholder="Masukkan NIK Anak">
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-0">
                                 <label for="hp_ortu" class="form-label fw-bold">Nomor Hp</label>
                                 <input type="number" class="form-control" id="hp_ortu" name="hp_ortu" required
                                     placeholder="Masukkan Nomor Hp">
                             </div>
+                            <div class="form-text mb-3 " id="basic-addon4">Masukkan Nomor Hp yang sudah Terdaftar.</div>
                             <div class="d-flex flex-row justify-content-center">
                                 <a href="/ekms" class="btn btn-keluar w-50 w-md-25 shadow me-2">
                                     <i class="bi bi-arrow-repeat"></i> Ulangi
